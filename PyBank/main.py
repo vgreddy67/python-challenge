@@ -3,11 +3,9 @@ import os
 
 #Storing the file path
 budget_csv  = "budget_data.csv"
-#creating a text file for the output
-#budget_output = "budget_output.txt"
 
 #creating and opening a text file for output
-output = open("budget_output.txt","w",newline = '')
+output = open("budget_output.txt","w")
 
 #opening file stream for reading csv file
 with open(budget_csv,newline = "") as budget:
@@ -15,9 +13,6 @@ with open(budget_csv,newline = "") as budget:
  
     #read the header first
     budget_header = next(budget)
-
-    #prev_row = next(budget)
-    #print(f"Previous row data : {prev_row}")
 
     count = 0
     totalAmount = 0
@@ -32,7 +27,6 @@ with open(budget_csv,newline = "") as budget:
 
     #reading through the budget file
     for row in budgetreader:
-        #print(f"current row data : {row}")
         #Number of months
         count = count + 1
 
@@ -79,4 +73,5 @@ with open(budget_csv,newline = "") as budget:
     output.write(f"Greatest Increase in Profits: {increaseDate} (${maxProfitIncrease}) \n")
     output.write(f"Greatest Decrease in Profits: {decreaseDate} (${maxProfitDecrease}) \n")
 
+    #closing the output file
     output.close()
