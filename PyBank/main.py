@@ -3,11 +3,16 @@ import os
 
 #Storing the file path
 budget_csv  = "budget_data.csv"
+#creating a text file for the output
+#budget_output = "budget_output.txt"
+
+#creating and opening a text file for output
+output = open("budget_output.txt","w",newline = '')
 
 #opening file stream for reading csv file
-with open (budget_csv,newline = "") as budget:
+with open(budget_csv,newline = "") as budget:
     budgetreader = csv.reader(budget,delimiter=",")
-
+ 
     #read the header first
     budget_header = next(budget)
 
@@ -65,3 +70,13 @@ with open (budget_csv,newline = "") as budget:
     print(f"Greatest Increase in Profits: {increaseDate} (${maxProfitIncrease})")
     print(f"Greatest Decrease in Profits: {decreaseDate} (${maxProfitDecrease})")
 
+    #writing the output to text file
+    output.write("Financial Analysis \n")
+    output.write("--------------------------------- \n")
+    output.write("Total Months: " + str(count) + "\n")
+    output.write(f"Total : ${str(totalAmount)} \n")
+    output.write("Average Change: {0}{1:.2f} \n".format("$",avg))
+    output.write(f"Greatest Increase in Profits: {increaseDate} (${maxProfitIncrease}) \n")
+    output.write(f"Greatest Decrease in Profits: {decreaseDate} (${maxProfitDecrease}) \n")
+
+    output.close()
