@@ -17,6 +17,9 @@ with open (budget_csv,newline = "") as budget:
     count = 0
     totalAmount = 0
     prevRow = 0
+    increaseDate = "abc"
+    maxChange = 0
+    change = 0
     changeTotal = 0
     avg = 0
 
@@ -32,13 +35,16 @@ with open (budget_csv,newline = "") as budget:
         #change Total calculation
         if (prevRow == 0):
            changeTotal = 0
+           maxChange = 0
         else:
-            changeTotal = changeTotal + (int(row[1]) - int(prevRow))
+            change = (int(row[1]) - int(prevRow))
+            changeTotal = changeTotal + change
+            
+            if (change > maxChange):
+                maxChange = change
+                increaseDate = row[0]
 
         prevRow = row[1]
-        #print(f"previous row value is : {prevRow}")
-        #print(f"change value is : {changeTotal}")
-
         
     #Average change
     avg = changeTotal / (count - 1) #change will be one less than total months
@@ -47,6 +53,8 @@ with open (budget_csv,newline = "") as budget:
     print("---------------------------------")
     print("Total Months: " + str(count))
     print("Total: $" + str(totalAmount))
+
     #Formatting to restrict the decimal places to 2
     print("Average Change: {0}{1:.2f}".format("$",avg))
+    print(f"Greatest Increase in Profits: {increaseDate} (${maxChange})")
 
