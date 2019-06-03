@@ -14,6 +14,9 @@ candidatePresent = False
 #List for total candidates
 candidates = []
 
+#Dictionary to store the candidates and their votes
+candidateDictionary = {}
+
 #print("len(candidates):" + str(len(candidates)))
 #opening the election_data.csv
 with open(election_csv,newline ="") as poll:
@@ -49,8 +52,14 @@ with open(election_csv,newline ="") as poll:
         for val in pollreader:
             if name == val[2]:
                 votesPerCandidate = votesPerCandidate + 1
-        #candidates
+        
+        #print(name + "........." + str(votesPerCandidate))
+        #candidateDictionary.update(name:votesPerCandidate)
+        candidateDictionary[name] = votesPerCandidate
 
+        votesPerCandidate = 0
+
+    #print(candidateDictionary)
     print("Election Results")
     print("-----------------------------")
     print("Total Votes: " + str(totalVotes))
