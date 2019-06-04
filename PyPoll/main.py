@@ -17,8 +17,8 @@ candidates = []
 #Dictionary to store the candidates and their votes
 candidateDictionary = {}
 percentVotes = 0
+popularVote = 0
 
-#print("len(candidates):" + str(len(candidates)))
 #opening the election_data.csv
 with open(election_csv,newline ="") as poll:
     pollreader = csv.reader(poll,delimiter=",")
@@ -53,11 +53,12 @@ with open(election_csv,newline ="") as poll:
         for val in pollreader:
             if name == val[2]:
                 votesPerCandidate = votesPerCandidate + 1
-        
+
         #calculating percentage votes per candidate
-        percentVotes = round((votesPerCandidate * 100)/totalVotes)
-        #candidateDictionary[name] = votesPerCandidate
-        #percentageVotes[name] = percentVotes
+        percentVotes = (votesPerCandidate * 100)/totalVotes
+    
+        #Adding the percentage votes and number of votes each candidate recieved to a Dictionary.
+        #Key for the dictionary is the name of the candidate
         candidateDictionary[name] = [percentVotes,votesPerCandidate]
 
         votesPerCandidate = 0
@@ -67,13 +68,27 @@ with open(election_csv,newline ="") as poll:
     print("-----------------------------")
     print("Total Votes: " + str(totalVotes))
     print("-----------------------------")
-    print(candidateDictionary[name][1])
-    for name,lst in candidateDictionary.items():
-        print(name + ": " +str(float(lst[0]))+"%  ("+str(lst[1])+")")
-    
 
     #Writing to the output file
     output.write("Election Results \n")
     output.write("-----------------------------\n")
     output.write("Total Votes: " + str(totalVotes) + "\n")
     output.write("-----------------------------\n")
+
+    #Displaying the candidates and their number and percentage of votes
+    for name,lst in candidateDictionary.items():
+       print(name + ": {0:.3f}".format(lst[0])+"%  ("+str(lst[1])+")")
+       output.write(name + ": {0:.3f}".format(lst[0])+"%  ("+str(lst[1])+")"+"\n")
+       if lst[1] > popularVote:
+           popularVote = lst[1]
+           winner = name
+    output.write("-----------------------------\n")
+    print("-----------------------------")
+    print("Winner:  " + winner)
+    output.write("Winner: " + winner)
+    print("-----------------------------")
+    output.write("\n-----------------------------\n")
+
+
+
+    
