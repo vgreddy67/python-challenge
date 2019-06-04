@@ -88,7 +88,7 @@ with open(election_csv,newline ="") as poll:
     output.write("Winner: " + winner)
     print("-----------------------------")
     output.write("\n-----------------------------\n")
-
+    output.close()
 
 
     
