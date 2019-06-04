@@ -63,7 +63,6 @@ with open(election_csv,newline ="") as poll:
 
         votesPerCandidate = 0
 
-    #print(candidateDictionary)
     print("Election Results")
     print("-----------------------------")
     print("Total Votes: " + str(totalVotes))
