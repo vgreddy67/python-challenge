@@ -25,3 +25,27 @@ Python-Challenge has 2 different challenges in it. PyBank and PyPoll. PyBank we 
                        Used this to find the date on which there is a maximum decrease in the profits or maximum losses.
         maxProfitIncrease - Stores the greatest  profit increase
         maxProfitDecrease - Stores the greatest decrease in profits
+
+PyPoll:
+	We are tasked with creating a Python script for analyzing the financial records of your company. You will give a set of financial data called budget_data.csv. The dataset is composed of two columns: Date and Profit/Losses. 
+PyPoll has two three files in it: election_data.csv, main.py and election_output.txt
+	The dataset is composed of three columns: Voter ID, County, and Candidate. A Python script is created that analyzes the votes and calculates each of the following:
+	The total number of votes cast:
+		A complete list of candidtes who received votes.
+		The percentage of votes each candidate won.
+		The total number of votes each candidate won.
+		The winner of the election based on popular vote.
+		
+Analysis looks similar to the one below:
+
+Election Results
+-------------------------
+Total Votes: 3521001
+-------------------------
+Khan: 63.000% (2218231)
+Correy: 20.000% (704200)
+Li: 14.000% (492940)
+O'Tooley: 3.000% (105630)
+-------------------------
+Winner: Khan
+-------------------------
